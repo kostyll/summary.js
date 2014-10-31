@@ -256,5 +256,16 @@ test = () ->
     console.log "summary ratio"
     console.log (100 - (100 * (summary.length/(title.length+content.length))))
 
+get_summary = (title,content) ->
+    st = SummaryTool()
+    sentences_dic = st.get_sentences_ranks(content)
+    summary = st.get_summary(title,content,sentences_dic)
+    efficiency = (100 - (100 * (summary.length/(title.length+content.length))))
+
+    return {
+        summary:summary,
+        efficiency:efficiency
+    }
+
 
 # test()
