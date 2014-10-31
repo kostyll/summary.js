@@ -257,4 +257,4 @@ test = () ->
     console.log (100 - (100 * (summary.length/(title.length+content.length))))
 
 
-test()
+# test()
