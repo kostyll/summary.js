@@ -2,6 +2,10 @@
 # cjsx -b -p -c demo.coffee > demo.js
 # https://github.com/jsdf/coffee-react
 
+SummaryItem = React.createClass
+    render: ()->
+        <p>{@props.item}</p>
+
 WorkSpace = React.createClass
     getInitialState: () ->
         {
@@ -24,8 +28,15 @@ WorkSpace = React.createClass
         </div>
 
     renderSummary:->
+        # console.log "Summary:"
+        summary = @state.summary.split("\n").filter( (element)->
+                element != ""
+            )
         <div>
-            {@state.summary}
+            {summary.map(
+                (result)->
+                    <SummaryItem item={result}/>
+            )}
         </div>
 
     renderState:->
